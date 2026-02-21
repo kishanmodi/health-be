@@ -90,13 +90,6 @@ The API will be available at `http://localhost:8000`
 - `GET /api/mappings/patient/{id}/` - Get doctors for patient
 - `DELETE /api/mappings/{id}/` - Remove assignment
 
-## Testing
-
-Run the API test suite:
-```bash
-python test_apis.py
-```
-
 ## Documentation
 
 - Swagger: `http://localhost:8000/swagger/`
