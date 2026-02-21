@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'patients',
     'doctors',
-    'mappings'
+    'mappings',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
