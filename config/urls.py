@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
 
 #Swagger
 from rest_framework import permissions
@@ -23,6 +24,24 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
+
+
+def welcome(request):
+    """Welcome endpoint"""
+    return JsonResponse({
+        "message": "Welcome to Healthcare Backend API",
+        "version": "1.0",
+        "documentation": {
+            "swagger": "http://localhost:8000/swagger/",
+            "redoc": "http://localhost:8000/redoc/"
+        },
+        "endpoints": {
+            "auth": "/api/auth/",
+            "patients": "/api/patients/",
+            "doctors": "/api/doctors/",
+            "mappings": "/api/mappings/"
+        }
+    })
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -35,6 +54,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('', welcome, name='welcome'),
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
     path('api/patients/', include('patients.urls')),
