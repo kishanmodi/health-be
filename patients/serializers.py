@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Patient
 
 class PatientSerializer(serializers.ModelSerializer):
+    age = serializers.IntegerField(min_value=1, max_value=120, help_text="Patient age (1-120)")
+    
     class Meta:
         model = Patient
         fields = '__all__'
